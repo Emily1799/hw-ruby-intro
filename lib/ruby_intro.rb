@@ -1,51 +1,42 @@
 # When done, submit this entire file to the autograder.
 
-# Part 1
-
+# Part 1 - completed in class with Aditya Tilyalkar, later modified by me alone to improve code
 def sum arr
+  #this is slightly too easy...
   arr.sum
 end
 #puts sum [1,2]
 
 def max_2_sum arr
+  #deal with empty array or arrays of len 1
   if arr.empty?
     return 0
   end  
   if arr.length == 1  
     return arr[0]
   end  
-  arr.sort.reverse[0] + arr.sort.reverse[1] 
+  #reverse sort the array and return the (new) first two values, which are the largest
+  reverse_sorted = arr.sort.reverse
+  reverse_sorted[0] + reverse_sorted[1] 
   
 end
 
-#puts max_2_sum [7,2,3,4]
-
 def sum_to_n? arr, n
-  
-  if arr.empty? or arr.length == 1
+  #Arrays of less than size 2 can't sum to anything
+  if arr.length < 2
     return false
   end
   
-  sorted_array = arr.sort.reverse
-  
-  i = 0
-
-  while i < sorted_array.length
-   #find the value that will sum to n
-    needed = n - sorted_array[i]
-    if needed != sorted_array[i] and arr.include? needed  
-      puts sorted_array[i].to_s+ "," + needed.to_s
+  arr.each do |cur_value|
+   #find the value that combined with where we are in the array, will sum to n
+    needed = n - cur_value
+    if needed != cur_value and arr.include? needed  
       return true
     end
-   i = i.next
   end
   false
 end
-puts sum_to_n?([-1, -2, 3, 4, 6, -8], 12)
-#puts sum_to_n?([-1, -2, 3, 4, 5, -8], -3)
-#puts sum_to_n? [1], 1
-#puts sum_to_n?([], 1)
-#puts sum_to_n? [1,2,3,7,9,11], 10
+
 # Part 2
 
 def hello(name)
