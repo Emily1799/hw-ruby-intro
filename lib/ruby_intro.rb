@@ -39,17 +39,47 @@ end
 
 # Part 2
 
-def hello(name)
-  # YOUR CODE HERE
+def hello name
+  "Hello, " + name
 end
 
 def starts_with_consonant? s
-  # YOUR CODE HERE
+  #deal with empty string
+  if s.empty? 
+    return false
+  end  
+  #the first character is not a vowel or a non letter
+  if /^[aeiou\W]/i.match(s)
+    return false
+  end
+  true
 end
 
-def binary_multiple_of_4? s
-  # YOUR CODE HERE
+
+def binary_multiple_of_4? val
+  puts val
+  s = val.to_s
+  if s.empty?
+    puts "s is empty"
+    return false
+    
+  end
+  #if it's not a valid binary number
+  if not /\b[01]+\b/.match s 
+    return false
+  end
+  if s.chars.last(2).join == "00" or s=="0"
+    return true
+  else
+    false
+  end
 end
+
+#puts binary_multiple_of_4? 0
+#puts binary_multiple_of_4? 10001
+#puts binary_multiple_of_4? 10000
+
+
 
 # Part 3
 
