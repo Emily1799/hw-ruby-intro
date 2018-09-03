@@ -5,7 +5,6 @@ def sum arr
   #this is slightly too easy...
   arr.sum
 end
-#puts sum [1,2]
 
 def max_2_sum arr
   #deal with empty array or arrays of len 1
@@ -56,11 +55,9 @@ def starts_with_consonant? s
 end
 
 
-def binary_multiple_of_4? val
-  puts val
+def binary_multiple_of_4? vals
   s = val.to_s
   if s.empty?
-    puts "s is empty"
     return false
     
   end
@@ -75,14 +72,36 @@ def binary_multiple_of_4? val
   end
 end
 
-#puts binary_multiple_of_4? 0
-#puts binary_multiple_of_4? 10001
-#puts binary_multiple_of_4? 10000
-
-
-
 # Part 3
 
 class BookInStock
-# YOUR CODE HERE
+  def initialize(isbn, price)
+    if isbn.empty? or price <= 0
+      raise ArgumentError
+    end
+    @isbn = isbn
+    @price = price
+    
+  end
+  
+  def price_as_string
+    val = sprintf "$%.2f", @price.to_f
+  end
+  
+ #getters
+  def isbn
+    @isbn
+  end
+  def price
+    @price
+  end
+  
+  #setters
+  def isbn=(val)
+    @isbn = val
+  end
+  
+  def price=(float)
+    @price=float
+  end
 end
